@@ -5,6 +5,31 @@ Nom de utilisateur: Cavani10
 mot de passe: 987654
 
 
+script pour creer la base de donnes:
+
+
+
+create database forum;
+
+create table forum( 
+id_forum int not null auto_increment primary key,
+forum_article varchar(1000), 
+forum_date date,
+forum_titre VARCHAR(100) NOT NULL,
+CONSTRAINT forum_titre_length CHECK (CHAR_LENGTH(forum_titre) BETWEEN 5 AND 100),
+user_id_user int not null, 
+constraint fk_user_id_user foreign key (user_id_user) references user(id_user)); 
+
+
+create table user ( 
+id_user int not null auto_increment primary key, 
+name varchar(25) not null,
+CONSTRAINT name_length CHECK (CHAR_LENGTH(name) BETWEEN 2 AND 25), 
+username varchar(100) not null,
+constraint unique_username unique(username), 
+password varchar(255) not null, 
+birthday date 
+); 
 
 
 
